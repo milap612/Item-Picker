@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'item.dart';
-import 'item_provider.dart';
+import '../models/item.dart';
+import '../providers/item_provider.dart';
 
 class ListItemWidget extends StatelessWidget {
   const ListItemWidget({super.key, required this.itemIndex});

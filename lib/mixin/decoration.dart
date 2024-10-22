@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'app_colors.dart';
+import '../utils/app_colors.dart';
 
 mixin WidgetDecoration {
   InputDecoration textFieldDecoration(String hint) {

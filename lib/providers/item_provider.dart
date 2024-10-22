@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'item.dart';
+import '../models/item.dart';
 
 class ItemProvider with ChangeNotifier {
   final FocusNode focusItemName = FocusNode();

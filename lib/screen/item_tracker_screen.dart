@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:item_tracker/form_button_widget.dart';
-import 'package:item_tracker/list_item_widget.dart';
-import 'package:item_tracker/validator.dart';
+import 'package:item_tracker/custom_widgets/form_button_widget.dart';
+import 'package:item_tracker/mixin/validator.dart';
 import 'package:provider/provider.dart';
 
-import 'app_strings.dart';
-import 'decoration.dart';
-import 'form_text_field_widget.dart';
-import 'item_provider.dart';
+import '../custom_widgets/form_text_field_widget.dart';
+import '../mixin/decoration.dart';
+import '../providers/item_provider.dart';
+import '../utils/app_strings.dart';
+import 'list_item_widget.dart';
 
 class ItemTrackerScreen extends StatelessWidget
     with Validator, WidgetDecoration {
@@ -25,11 +25,10 @@ class ItemTrackerScreen extends StatelessWidget
               child: ListView.builder(
                 controller: itemProvider.scrollController,
                 itemCount: itemProvider.items.length,
-                itemBuilder: (context, index) =>
-                    GestureDetector(
-                      key: itemProvider.keys[index],
-                      onTap: () => measureWidget(context,index),
-                        child: ListItemWidget(itemIndex: index)),
+                itemBuilder: (context, index) => GestureDetector(
+                    key: itemProvider.keys[index],
+                    onTap: () => measureWidget(context, index),
+                    child: ListItemWidget(itemIndex: index)),
               ),
             ),
             Padding(
@@ -71,20 +70,21 @@ class ItemTrackerScreen extends StatelessWidget
     );
   }
 
-  void measureWidget(BuildContext context,int index) {
+  void measureWidget(BuildContext context, int index) {
     final key = context.read<ItemProvider>().keys[index];
-    final RenderBox? renderBox = key.currentContext?.findRenderObject() as RenderBox?;
+    final RenderBox? renderBox =
+        key.currentContext?.findRenderObject() as RenderBox?;
     final size = renderBox?.size;
     final position = renderBox?.localToGlobal(Offset.zero);
 
     Fluttertoast.showToast(
-        msg: "Widget at index $index has size: $size and positioned at: $position",
+        msg:
+            "Widget at index $index has size: $size and positioned at: $position",
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.CENTER,
         timeInSecForIosWeb: 1,
         backgroundColor: Colors.blue,
         textColor: Colors.white,
-        fontSize: 16.0
-    );
-    }
+        fontSize: 16.0);
+  }
 }

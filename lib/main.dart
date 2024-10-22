@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:item_tracker/app_strings.dart';
-import 'package:item_tracker/item_provider.dart';
-import 'package:item_tracker/item_tracker_screen.dart';
+import 'package:item_tracker/providers/item_provider.dart';
+import 'package:item_tracker/screen/item_tracker_screen.dart';
 import 'package:provider/provider.dart';
+
+import 'utils/app_strings.dart';
 
 void main() {
   runApp(ChangeNotifierProvider(
